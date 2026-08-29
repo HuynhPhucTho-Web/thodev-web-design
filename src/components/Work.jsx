@@ -1,0 +1,178 @@
+import React, { useRef, useState, useEffect } from 'react'
+
+const Work = () => {
+  const containerRef = useRef(null)
+  const [progress, setProgress] = useState(0)
+
+  const projects = [
+    {
+      num: '01',
+      title: 'DASH',
+      category: 'WEBFLOW STUDIO BUILD',
+      description: 'A CUSTOM WEBFLOW TEMPLATE SHAPED FOR A MODERN CREATIVE STUDIO. BUILT WITH A SHARP CMS STRUCTURE, REUSABLE SECTIONS, AND SCRIPT-LED MOTION DETAILS THAT KEEP THE PORTFOLIO FAST, POLISHED, AND EASY TO EXTEND.',
+      image: '/images/design_web.jpg'
+    },
+    {
+      num: '02',
+      title: 'RACEPOINT',
+      category: 'WEBFLOW EDITORIAL SYSTEM',
+      description: 'A WEBFLOW SITE WITH AN EDITORIAL VISUAL SYSTEM, CUSTOM PAGE TEMPLATES, AND A FLEXIBLE COMPONENT SETUP. MODERN INTERACTIONS AND LIGHTWEIGHT SCRIPTS BRING MOVEMENT TO THE LAYOUT WITHOUT LOSING THE CLEAN, CONFIDENT BRAND FEEL.',
+      image: '/images/deo_web.jpg'
+    },
+    {
+      num: '03',
+      title: 'COMMUTER',
+      category: 'WEBFLOW FILM PORTFOLIO',
+      description: 'A CINEMATIC WEBFLOW PORTFOLIO BUILT AROUND IMMERSIVE PROJECT PRESENTATION. CUSTOM TEMPLATES, CMS-DRIVEN MEDIA, AND MODERN SCRIPT ENHANCEMENTS GIVE THE SITE A BOLD RHYTHM WHILE KEEPING UPDATES STRAIGHTFORWARD.',
+      image: '/images/pro_design.jpg'
+    }
+  ]
+
+  const getSlideProgress = (p) => {
+    if (p <= 0.2) return 0
+    if (p >= 0.9) return 2
+    
+    if (p > 0.2 && p < 0.45) {
+      const t = (p - 0.2) / 0.25
+      return 3 * t * t - 2 * t * t * t
+    }
+    
+    if (p >= 0.45 && p <= 0.65) return 1
+    
+    if (p > 0.65 && p < 0.9) {
+      const t = (p - 0.65) / 0.25
+      return 1 + (3 * t * t - 2 * t * t * t)
+    }
+    
+    return 0
+  }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const container = containerRef.current
+      if (!container) return
+      
+      const rect = container.getBoundingClientRect()
+      const viewportHeight = window.innerHeight
+      
+      // The scroll progress starts when the top of the container reaches the top of the viewport.
+      // Ends when the bottom of the container reaches the bottom of the viewport.
+      const totalScrollHeight = rect.height - viewportHeight
+      const scrolled = -rect.top
+      
+      let p = scrolled / totalScrollHeight
+      p = Math.max(0, Math.min(1, p))
+      setProgress(p)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <section id="work" ref={containerRef} className="relative w-full h-[400vh] bg-[#090A0C] scroll-mt-16">
+      <div className="sticky top-0 w-full h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden">
+        
+        {/* Large WORK Title at the top */}
+        <div className="text-center select-none z-10 pb-4 relative">
+          <h2 className="font-headline-lg text-5xl md:text-7xl font-extrabold tracking-tighter uppercase text-white">
+            WORK
+          </h2>
+        </div>
+
+        {/* Layout Container */}
+        <div className="flex-grow flex items-center w-full px-4 md:px-10 lg:px-16 relative">
+          
+          {/* Main Grid Border Box */}
+          <div className="w-full grid grid-cols-1 md:grid-cols-12 border-t border-b border-[#22262E] py-8 relative min-h-[480px]">
+            
+            {/* Plus signs at the 4 outer corners of the border grid */}
+            <span className="absolute -top-1.5 left-0 text-[#45474d] font-mono text-[10px] font-bold select-none">+</span>
+            <span className="absolute -top-1.5 right-0 text-[#45474d] font-mono text-[10px] font-bold select-none">+</span>
+            <span className="absolute -bottom-2 left-0 text-[#45474d] font-mono text-[10px] font-bold select-none">+</span>
+            <span className="absolute -bottom-2 right-0 text-[#45474d] font-mono text-[10px] font-bold select-none">+</span>
+
+            {/* Vertical grid lines (divider lines) */}
+            <div className="absolute top-0 bottom-0 left-[25%] border-l border-[#22262E] hidden md:block">
+              <span className="absolute -top-1.5 -left-1 text-[#45474d] font-mono text-[10px] font-bold select-none">+</span>
+              <span className="absolute -bottom-2 -left-1 text-[#45474d] font-mono text-[10px] font-bold select-none">+</span>
+            </div>
+            <div className="absolute top-0 bottom-0 right-[25%] border-r border-[#22262E] hidden md:block">
+              <span className="absolute -top-1.5 -left-1 text-[#45474d] font-mono text-[10px] font-bold select-none">+</span>
+              <span className="absolute -bottom-2 -left-1 text-[#45474d] font-mono text-[10px] font-bold select-none">+</span>
+            </div>
+
+            {/* Left Column: Number (01, 02, 03) */}
+            <div className="col-span-12 md:col-span-3 flex flex-col justify-between py-4 pr-6 relative z-20">
+              <div className="h-[120px] overflow-hidden relative">
+                <div 
+                  className="flex flex-col transition-transform duration-75 ease-out"
+                  style={{ transform: `translateY(${-getSlideProgress(progress) * 120}px)` }}
+                >
+                  {projects.map((project, idx) => (
+                    <div key={idx} className="h-[120px] flex items-start">
+                      <span className="font-headline-lg text-7xl md:text-9xl font-extrabold tracking-tighter leading-none text-white select-none">
+                        {project.num}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-8 md:mt-0">
+                <div className="border border-[#22262E] px-3 py-1.5 font-mono-technical text-[10px] uppercase tracking-wider inline-block text-[#c6c6cc] hover:text-white hover:border-white transition-colors cursor-pointer select-none">
+                  VIEW PROJECT
+                </div>
+              </div>
+            </div>
+
+            {/* Middle Column: Images */}
+            <div className="col-span-12 md:col-span-6 flex items-center justify-center relative overflow-hidden h-[300px] md:h-[450px] my-6 md:my-0">
+              <div 
+                className="w-full h-full flex flex-col transition-transform duration-75 ease-out"
+                style={{ transform: `translateY(${-getSlideProgress(progress) * 100}%)` }}
+              >
+                {projects.map((project, idx) => (
+                  <div key={idx} className="w-full h-full flex-shrink-0 flex items-center justify-center p-4">
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="max-w-full max-h-[90%] object-contain border border-[#22262E] shadow-2xl bg-[#111317]/50" 
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Right Column: Title and Details */}
+            <div className="col-span-12 md:col-span-3 flex flex-col justify-between py-4 pl-6 relative z-20">
+              <div className="h-full overflow-hidden relative min-h-[220px]">
+                <div 
+                  className="w-full h-full flex flex-col transition-transform duration-75 ease-out"
+                  style={{ transform: `translateY(${-getSlideProgress(progress) * 100}%)` }}
+                >
+                  {projects.map((project, idx) => (
+                    <div key={idx} className="w-full h-full flex-shrink-0 flex flex-col justify-between py-2">
+                      <div>
+                        <h3 className="font-headline-md text-2xl font-bold uppercase tracking-tight text-white">{project.title}</h3>
+                        <p className="font-mono-technical text-[9px] text-[#CCFF00] uppercase tracking-wider mt-1">{project.category}</p>
+                      </div>
+                      <p className="font-mono-technical text-[10px] text-[#c6c6cc] leading-relaxed uppercase mt-6 md:mt-auto">
+                        {project.description}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  )
+}
+
+export default Work
