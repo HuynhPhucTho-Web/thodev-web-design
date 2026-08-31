@@ -10,21 +10,24 @@ const Work = () => {
       title: 'DASH',
       category: 'WEBFLOW STUDIO BUILD',
       description: 'A CUSTOM WEBFLOW TEMPLATE SHAPED FOR A MODERN CREATIVE STUDIO. BUILT WITH A SHARP CMS STRUCTURE, REUSABLE SECTIONS, AND SCRIPT-LED MOTION DETAILS THAT KEEP THE PORTFOLIO FAST, POLISHED, AND EASY TO EXTEND.',
-      image: '/images/design_web.jpg'
+      image: '/images/design_web.jpg',
+      link: 'https://dash-studio.webflow.io'
     },
     {
       num: '02',
       title: 'RACEPOINT',
       category: 'WEBFLOW EDITORIAL SYSTEM',
       description: 'A WEBFLOW SITE WITH AN EDITORIAL VISUAL SYSTEM, CUSTOM PAGE TEMPLATES, AND A FLEXIBLE COMPONENT SETUP. MODERN INTERACTIONS AND LIGHTWEIGHT SCRIPTS BRING MOVEMENT TO THE LAYOUT WITHOUT LOSING THE CLEAN, CONFIDENT BRAND FEEL.',
-      image: '/images/deo_web.jpg'
+      image: '/images/deo_web.jpg',
+      link: 'https://racepoint.webflow.io'
     },
     {
       num: '03',
       title: 'COMMUTER',
       category: 'WEBFLOW FILM PORTFOLIO',
       description: 'A CINEMATIC WEBFLOW PORTFOLIO BUILT AROUND IMMERSIVE PROJECT PRESENTATION. CUSTOM TEMPLATES, CMS-DRIVEN MEDIA, AND MODERN SCRIPT ENHANCEMENTS GIVE THE SITE A BOLD RHYTHM WHILE KEEPING UPDATES STRAIGHTFORWARD.',
-      image: '/images/pro_design.jpg'
+      image: '/images/pro_design.jpg',
+      link: 'https://commuter-film.webflow.io'
     }
   ]
 
@@ -69,6 +72,9 @@ const Work = () => {
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const activeIndex = Math.max(0, Math.min(projects.length - 1, Math.round(getSlideProgress(progress))))
+  const activeProject = projects[activeIndex]
 
   return (
     <section id="work" ref={containerRef} className="relative w-full h-[400vh] bg-[#090A0C] scroll-mt-16">
@@ -120,9 +126,14 @@ const Work = () => {
                 </div>
               </div>
               <div className="mt-8 md:mt-0">
-                <div className="border border-[#22262E] px-3 py-1.5 font-mono-technical text-[10px] uppercase tracking-wider inline-block text-[#c6c6cc] hover:text-white hover:border-white transition-colors cursor-pointer select-none">
-                  VIEW PROJECT
-                </div>
+                <a 
+                  href={activeProject.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="border border-[#22262E] px-3.5 py-2 font-mono-technical text-[10px] uppercase tracking-wider inline-block text-[#c6c6cc] hover:text-[#090A0C] hover:bg-[#CCFF00] hover:border-[#CCFF00] transition-all duration-300 cursor-pointer select-none"
+                >
+                  VIEW PROJECT ↗
+                </a>
               </div>
             </div>
 
@@ -134,11 +145,18 @@ const Work = () => {
               >
                 {projects.map((project, idx) => (
                   <div key={idx} className="w-full h-full flex-shrink-0 flex items-center justify-center p-4">
-                    <img 
-                      src={project.image} 
-                      alt={project.title} 
-                      className="max-w-full max-h-[90%] object-contain border border-[#22262E] shadow-2xl bg-[#111317]/50" 
-                    />
+                    <a 
+                      href={project.link} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="w-full h-full flex items-center justify-center cursor-pointer group/img transform hover:scale-[1.02] transition-transform duration-300"
+                    >
+                      <img 
+                        src={project.image} 
+                        alt={project.title} 
+                        className="max-w-full max-h-[90%] object-contain border border-[#22262E] group-hover/img:border-[#CCFF00] shadow-2xl bg-[#111317]/50 transition-colors duration-300" 
+                      />
+                    </a>
                   </div>
                 ))}
               </div>
@@ -154,7 +172,16 @@ const Work = () => {
                   {projects.map((project, idx) => (
                     <div key={idx} className="w-full h-full flex-shrink-0 flex flex-col justify-between py-2">
                       <div>
-                        <h3 className="font-headline-md text-2xl font-bold uppercase tracking-tight text-white">{project.title}</h3>
+                        <a 
+                          href={project.link} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          className="group/title inline-block"
+                        >
+                          <h3 className="font-headline-md text-2xl font-bold uppercase tracking-tight text-white group-hover/title:text-[#CCFF00] transition-colors">
+                            {project.title} <span className="inline-block transition-transform duration-200 group-hover/title:translate-x-1 group-hover/title:-translate-y-1">↗</span>
+                          </h3>
+                        </a>
                         <p className="font-mono-technical text-[9px] text-[#CCFF00] uppercase tracking-wider mt-1">{project.category}</p>
                       </div>
                       <p className="font-mono-technical text-[10px] text-[#c6c6cc] leading-relaxed uppercase mt-6 md:mt-auto">

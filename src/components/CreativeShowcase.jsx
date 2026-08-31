@@ -14,18 +14,18 @@ const CreativeShowcase = () => {
   
   // 12 cards to create a dense, rich circular loop of screens
   const cardsData = [
-    { image: '/images/image_left.webp', catIdx: 0 },
-    { image: '/images/image_right.webp', catIdx: 1 },
-    { image: '/images/image_left.webp', catIdx: 2 },
-    { image: '/images/image_right.webp', catIdx: 0 },
-    { image: '/images/image_left.webp', catIdx: 1 },
-    { image: '/images/image_right.webp', catIdx: 2 },
-    { image: '/images/image_left.webp', catIdx: 0 },
-    { image: '/images/image_right.webp', catIdx: 1 },
-    { image: '/images/image_left.webp', catIdx: 2 },
-    { image: '/images/image_right.webp', catIdx: 0 },
-    { image: '/images/image_left.webp', catIdx: 1 },
-    { image: '/images/image_right.webp', catIdx: 2 }
+    { image: '/images/mobile_elec.png', catIdx: 0 },
+    { image: '/images/mobile_vivu.png', catIdx: 1 },
+    { image: '/images/mobile_phuctho.png', catIdx: 2 },
+    { image: '/images/mobile_hopi.png', catIdx: 0 },
+    { image: '/images/mobile_phuctho1.png', catIdx: 1 },
+    { image: '/images/mobile_vivu.png', catIdx: 2 },
+    { image: '/images/mobile_vivu1.png', catIdx: 0 },
+    { image: '/images/mobile_hopi.png', catIdx: 1 },
+    { image: '/images/mobile_elec.png', catIdx: 2 },
+    { image: '/images/mobile_phutho2.png', catIdx: 0 },
+    { image: '/images/mobile_elec.png', catIdx: 1 },
+    { image: '/images/mobile_vivu.png', catIdx: 2 }
   ]
 
   // Refs for tracking target and smoothed mouse coordinates (prevents re-render loops)
@@ -176,7 +176,7 @@ const CreativeShowcase = () => {
           return (
             <div 
               key={idx}
-              className="absolute w-[110px] md:w-[230px] h-[230px] md:h-[485px] bg-[#111317] border border-[#22262E] rounded-xl shadow-2xl overflow-hidden transition-all duration-75 ease-out"
+              className="absolute w-[140px] md:w-[270px] aspect-[9/16] bg-[#111317] border border-[#22262E] rounded-xl shadow-2xl overflow-hidden transition-all duration-75 ease-out"
               style={{
                 transform: `translateX(${rx}px) translateY(${ry}px) scale(${scale}) rotateY(${rotateY}deg)`,
                 opacity: opacity,
@@ -187,7 +187,7 @@ const CreativeShowcase = () => {
               <img 
                 src={card.image} 
                 alt={`UI Card ${idx}`} 
-                className="w-full h-full object-cover grayscale select-none pointer-events-none" 
+                className="w-full h-full object-cover select-none pointer-events-none" 
               />
             </div>
           )
@@ -195,10 +195,10 @@ const CreativeShowcase = () => {
 
         {/* 3. Foreground Layer: Central Character (Anchored bottom-center, tilts upper body in 3D path) */}
         <div 
-          className="absolute bottom-0 w-[220px] md:w-[320px] flex justify-center items-end transition-transform duration-75 ease-out pointer-events-none animate-[float_4s_ease-in-out_infinite]"
+          className="absolute bottom-0 w-[220px] md:w-[320px] flex justify-center items-end transition-transform duration-75 ease-out pointer-events-none"
           style={{
             transformOrigin: 'bottom center', // Anchor feet point
-            transform: `translateY(${charY + frameData.mouseY * 10}px) translateX(${frameData.mouseX * 20}px) rotate(${frameData.mouseX * 8}deg) skewX(${frameData.mouseX * -4}deg)`,
+            transform: `translateY(${charY}px) rotate(${frameData.mouseX * 12}deg) rotateY(${frameData.mouseX * 30}deg) rotateX(${frameData.mouseY * -20}deg)`,
             zIndex: 150 // Always render strictly on top of all carousel cards
           }}
         >
@@ -208,7 +208,7 @@ const CreativeShowcase = () => {
               e.target.src = '/images/2d_image.png' // Fallback image if the main character image fails to load
             }}
             alt="Founding Product Designer" 
-            className="w-full h-auto object-contain max-h-[380px] md:max-h-[520px] select-none"
+            className="w-full h-auto object-contain max-h-[380px] md:max-h-[520px] select-none animate-[float_4s_ease-in-out_infinite]"
           />
         </div>
 

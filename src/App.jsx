@@ -5,7 +5,9 @@ import Hero from './components/Hero'
 import CreativeShowcase from './components/CreativeShowcase'
 import About from './components/About'
 import Work from './components/Work'
+import ProjectCards from './components/ProjectCards'
 import IntakeForm from './components/IntakeForm'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 function App() {
@@ -52,10 +54,18 @@ function App() {
             <Work />
           </div>
 
+          {/* Grid Project Cards Section */}
+          <div id="projects" className="scroll-mt-24">
+            <ProjectCards />
+          </div>
+
           {/* Website Design Brief (Intake Form) Section */}
-          <div ref={intakeFormRef} className="py-16 md:py-24">
+          <div ref={intakeFormRef} className="border-b border-[#22262E] py-16 md:py-24">
             <IntakeForm />
           </div>
+
+          {/* Contact Section */}
+          <Contact />
         </main>
 
         {/* Footer */}

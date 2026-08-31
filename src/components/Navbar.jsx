@@ -22,6 +22,9 @@ const Navbar = ({ onBriefClick }) => {
         <a className="text-[#c6c6cc] hover:text-white hover:bg-[#343537]/30 transition-all duration-150 px-3 py-1.5" href="#services">
           SERVICES
         </a>
+        <a className="text-[#c6c6cc] hover:text-white hover:bg-[#343537]/30 transition-all duration-150 px-3 py-1.5" href="#contact">
+          CONTACT
+        </a>
         <button 
           onClick={onBriefClick}
           className="text-[#A3CC00] font-bold border-b border-[#A3CC00] hover:bg-[#343537]/30 transition-all duration-150 px-3 py-1.5 hover:translate-x-1"
