@@ -1,35 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const Work = () => {
+  const { t } = useLanguage()
   const containerRef = useRef(null)
   const [progress, setProgress] = useState(0)
 
-  const projects = [
-    {
-      num: '01',
-      title: 'DASH',
-      category: 'WEBFLOW STUDIO BUILD',
-      description: 'A CUSTOM WEBFLOW TEMPLATE SHAPED FOR A MODERN CREATIVE STUDIO. BUILT WITH A SHARP CMS STRUCTURE, REUSABLE SECTIONS, AND SCRIPT-LED MOTION DETAILS THAT KEEP THE PORTFOLIO FAST, POLISHED, AND EASY TO EXTEND.',
-      image: '/images/design_web.jpg',
-      link: 'https://dash-studio.webflow.io'
-    },
-    {
-      num: '02',
-      title: 'RACEPOINT',
-      category: 'WEBFLOW EDITORIAL SYSTEM',
-      description: 'A WEBFLOW SITE WITH AN EDITORIAL VISUAL SYSTEM, CUSTOM PAGE TEMPLATES, AND A FLEXIBLE COMPONENT SETUP. MODERN INTERACTIONS AND LIGHTWEIGHT SCRIPTS BRING MOVEMENT TO THE LAYOUT WITHOUT LOSING THE CLEAN, CONFIDENT BRAND FEEL.',
-      image: '/images/deo_web.jpg',
-      link: 'https://racepoint.webflow.io'
-    },
-    {
-      num: '03',
-      title: 'COMMUTER',
-      category: 'WEBFLOW FILM PORTFOLIO',
-      description: 'A CINEMATIC WEBFLOW PORTFOLIO BUILT AROUND IMMERSIVE PROJECT PRESENTATION. CUSTOM TEMPLATES, CMS-DRIVEN MEDIA, AND MODERN SCRIPT ENHANCEMENTS GIVE THE SITE A BOLD RHYTHM WHILE KEEPING UPDATES STRAIGHTFORWARD.',
-      image: '/images/pro_design.jpg',
-      link: 'https://commuter-film.webflow.io'
-    }
-  ]
+  const projects = t.work.projects
 
   const getSlideProgress = (p) => {
     if (p <= 0.2) return 0
@@ -77,13 +54,13 @@ const Work = () => {
   const activeProject = projects[activeIndex]
 
   return (
-    <section id="work" ref={containerRef} className="relative w-full h-[400vh] bg-[#090A0C] scroll-mt-16">
+    <section id="work" ref={containerRef} className="relative w-full h-[400vh] bg-[#090A0C] scroll-mt-24">
       <div className="sticky top-0 w-full h-screen flex flex-col justify-between pt-24 pb-16 overflow-hidden">
         
         {/* Large WORK Title at the top */}
         <div className="text-center select-none z-10 pb-4 relative">
           <h2 className="font-headline-lg text-5xl md:text-7xl font-extrabold tracking-tighter uppercase text-white">
-            WORK
+            {t.work.title}
           </h2>
         </div>
 
@@ -132,7 +109,7 @@ const Work = () => {
                   rel="noopener noreferrer"
                   className="border border-[#22262E] px-3.5 py-2 font-mono-technical text-[10px] uppercase tracking-wider inline-block text-[#c6c6cc] hover:text-[#090A0C] hover:bg-[#CCFF00] hover:border-[#CCFF00] transition-all duration-300 cursor-pointer select-none"
                 >
-                  VIEW PROJECT ↗
+                  {t.work.viewProject}
                 </a>
               </div>
             </div>

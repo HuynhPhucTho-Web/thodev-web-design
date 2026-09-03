@@ -1,6 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const Hero = ({ onBriefClick }) => {
+  const { t } = useLanguage()
   const marqueeRef = useRef(null)
   const [scrollOffset, setScrollOffset] = useState(0)
 
@@ -31,21 +33,25 @@ const Hero = ({ onBriefClick }) => {
       {/* Tech Status Tag */}
       <div className="flex items-center gap-2 mb-6 font-mono-technical text-xs tracking-wider text-[#A3CC00]">
         <div className="w-2.5 h-2.5 rounded-full bg-[#A3CC00] pulse-dot"></div>
-        <span>SYSTEM.STATUS: ACTIVE_NODE // CONNECTED</span>
+        <span>{t.hero.statusTag}</span>
       </div>
 
       {/* Main Big Typographic Headline */}
       <h1 className="font-headline-xl-mobile md:font-headline-xl text-4xl md:text-7xl font-extrabold text-white tracking-tighter max-w-5xl leading-none">
-        Chúng tôi kiến tạo những{' '}
+        {t.hero.headlineStart}{' '}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-white to-[#c6c6cc]">
-          trải nghiệm số
+          {t.hero.headlineGradient}
         </span>{' '}
-        <span className="text-[#CCFF00]">độc bản.</span>
+        <span className="text-[#CCFF00]">{t.hero.headlineEnd}</span>
       </h1>
 
       {/* Narrative Subtext */}
       <p className="mt-8 font-body-lg text-[#c6c6cc] text-lg md:text-xl max-w-3xl leading-relaxed">
-        <strong className="text-white">ThoDev-Web_Design</strong> là đối tác đồng sáng tạo kết hợp nhuần nhuyễn giữa nghệ thuật chữ sắc sảo (<span className="text-white">high-end typography</span>) và ngôn ngữ chuyển động giàu cảm xúc (<span className="text-white">expressive motion design</span>). Chúng tôi chuyển hóa ý tưởng sơ khởi thành các sản phẩm kỹ thuật số hoàn thiện, thu hút và giữ trọn sự chú ý của khách hàng.
+        <strong className="text-white">ThoDev-Web_Design</strong> {t.hero.subtextPrefix}
+        <span className="text-white">{t.hero.subtextTypo}</span>
+        {t.hero.subtextMid}
+        <span className="text-white">{t.hero.subtextMotion}</span>
+        {t.hero.subtextSuffix}
       </p>
 
       {/* Interactive Action Buttons */}
@@ -54,7 +60,7 @@ const Hero = ({ onBriefClick }) => {
           onClick={onBriefClick}
           className="font-bold bg-[#CCFF00] text-[#090A0C] px-8 py-4 hover:bg-[#D9FF33] transition-all flex items-center gap-3 uppercase tracking-wider group"
         >
-          INITIALIZE_INTAKE
+          {t.hero.btnIntake}
           <span className="material-symbols-outlined text-lg group-hover:translate-x-1 transition-transform" style={{ fontVariationSettings: "'FILL' 0" }}>
             arrow_forward
           </span>
@@ -64,7 +70,7 @@ const Hero = ({ onBriefClick }) => {
           href="#about"
           className="font-bold border border-[#22262E] text-white px-8 py-4 bg-[#111317]/50 hover:border-[#CCFF00] hover:bg-[#111317]/80 transition-all flex items-center gap-2 uppercase tracking-wider"
         >
-          EXPLORE_PHILOSOPHY
+          {t.hero.btnPhilosophy}
           <span className="material-symbols-outlined text-lg">
             expand_more
           </span>
@@ -80,7 +86,7 @@ const Hero = ({ onBriefClick }) => {
         <div className="px-4 md:px-10 lg:px-16 mb-6 flex items-center gap-2 select-none">
           <span className="w-1.5 h-1.5 rounded-full bg-[#CCFF00] pulse-dot"></span>
           <span className="font-mono-technical text-[10px] text-[#A3CC00] uppercase tracking-widest font-bold">
-            SERVICES & CORE EXPERTISE
+            {t.hero.marqueeLabel}
           </span>
         </div>
 
@@ -91,35 +97,19 @@ const Hero = ({ onBriefClick }) => {
         >
           <div className="flex whitespace-nowrap gap-16 animate-marquee-left text-white font-mono-technical text-xs md:text-sm uppercase tracking-widest select-none">
             {/* Set 1 */}
-            <span>BRAND IDENTITY</span>
-            <span>•</span>
-            <span>WEBFLOW DEVELOPMENT</span>
-            <span>•</span>
-            <span>EDITORIAL VISUAL SYSTEMS</span>
-            <span>•</span>
-            <span>CUSTOM MOTION DESIGN</span>
-            <span>•</span>
-            <span>DYNAMIC HEADLESS CMS</span>
-            <span>•</span>
-            <span>3D INTERACTIVE WEBGL</span>
-            <span>•</span>
-            <span>HIGH-END TYPOGRAPHY</span>
-            <span>•</span>
+            {t.hero.marqueeRow1.map((item, idx) => (
+              <React.Fragment key={`r1-1-${idx}`}>
+                <span>{item}</span>
+                <span>•</span>
+              </React.Fragment>
+            ))}
             {/* Set 2 (duplicate for seamless loop) */}
-            <span>BRAND IDENTITY</span>
-            <span>•</span>
-            <span>WEBFLOW DEVELOPMENT</span>
-            <span>•</span>
-            <span>EDITORIAL VISUAL SYSTEMS</span>
-            <span>•</span>
-            <span>CUSTOM MOTION DESIGN</span>
-            <span>•</span>
-            <span>DYNAMIC HEADLESS CMS</span>
-            <span>•</span>
-            <span>3D INTERACTIVE WEBGL</span>
-            <span>•</span>
-            <span>HIGH-END TYPOGRAPHY</span>
-            <span>•</span>
+            {t.hero.marqueeRow1.map((item, idx) => (
+              <React.Fragment key={`r1-2-${idx}`}>
+                <span>{item}</span>
+                <span>•</span>
+              </React.Fragment>
+            ))}
           </div>
         </div>
 
@@ -130,35 +120,19 @@ const Hero = ({ onBriefClick }) => {
         >
           <div className="flex whitespace-nowrap gap-16 animate-marquee-right text-[#c6c6cc] font-mono-technical text-xs md:text-sm uppercase tracking-widest select-none">
             {/* Set 1 */}
-            <span>MINIMALIST & PURPOSEFUL</span>
-            <span>•</span>
-            <span>EXPRESSIVE INTERACTION</span>
-            <span>•</span>
-            <span>TECHNICAL ROBUSTNESS</span>
-            <span>•</span>
-            <span>RESPONSIVE FLUID LAYOUT</span>
-            <span>•</span>
-            <span>HARDWARE ACCELERATED</span>
-            <span>•</span>
-            <span>CREATIVE ENGINEERING</span>
-            <span>•</span>
-            <span>DIGITAL CRAFTSMANSHIP</span>
-            <span>•</span>
+            {t.hero.marqueeRow2.map((item, idx) => (
+              <React.Fragment key={`r2-1-${idx}`}>
+                <span>{item}</span>
+                <span>•</span>
+              </React.Fragment>
+            ))}
             {/* Set 2 (duplicate) */}
-            <span>MINIMALIST & PURPOSEFUL</span>
-            <span>•</span>
-            <span>EXPRESSIVE INTERACTION</span>
-            <span>•</span>
-            <span>TECHNICAL ROBUSTNESS</span>
-            <span>•</span>
-            <span>RESPONSIVE FLUID LAYOUT</span>
-            <span>•</span>
-            <span>HARDWARE ACCELERATED</span>
-            <span>•</span>
-            <span>CREATIVE ENGINEERING</span>
-            <span>•</span>
-            <span>DIGITAL CRAFTSMANSHIP</span>
-            <span>•</span>
+            {t.hero.marqueeRow2.map((item, idx) => (
+              <React.Fragment key={`r2-2-${idx}`}>
+                <span>{item}</span>
+                <span>•</span>
+              </React.Fragment>
+            ))}
           </div>
         </div>
       </div>

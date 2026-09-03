@@ -1,16 +1,18 @@
 import React, { useRef, useState, useEffect } from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const CreativeShowcase = () => {
+  const { t } = useLanguage()
   const containerRef = useRef(null)
   
   // Single animation state updated at 60fps to prevent render stutters
   const [frameData, setFrameData] = useState({ angle: 0, mouseX: 0, mouseY: 0 })
-  const [activeText, setActiveText] = useState('BRAND DESIGN')
+  const [activeCatIdx, setActiveCatIdx] = useState(2)
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== 'undefined' ? window.innerWidth : 1200
   )
 
-  const categories = ['PRODUCT DESIGN', 'UX/UI DESIGN', 'BRAND DESIGN']
+  const categories = t.creativeShowcase.categories
   
   // 12 cards to create a dense, rich circular loop of screens
   const cardsData = [
@@ -102,7 +104,7 @@ const CreativeShowcase = () => {
         }
       })
       
-      setActiveText(categories[closestCat])
+      setActiveCatIdx(closestCat)
       
       animId = requestAnimationFrame(tick)
     }
@@ -119,6 +121,8 @@ const CreativeShowcase = () => {
   // Dynamic Horizontal Radius based on screen size (spans to screen edges)
   const radius = Math.min(840, windowWidth * 0.44)
 
+  const activeCategoryText = categories[activeCatIdx] || categories[0]
+
   return (
     <section 
       ref={containerRef} 
@@ -129,14 +133,14 @@ const CreativeShowcase = () => {
       
       {/* 1. Background Layer: Dynamic Morphing Header */}
       <div 
-        key={activeText}
+        key={activeCategoryText}
         className="absolute top-[26%] md:top-[16%] w-full text-center z-0 pointer-events-none select-none animate-title-reveal"
         style={{ 
           transform: `translateY(${titleY + frameData.mouseY * -30}px) translateX(${frameData.mouseX * -60}px) scale(${1 + scrollY * 0.0001})` 
         }}
       >
         <h2 className="font-headline-xl text-5xl md:text-[140px] font-extrabold tracking-tighter uppercase text-white/5 leading-none select-none">
-          {activeText}
+          {activeCategoryText}
         </h2>
       </div>
 
@@ -217,10 +221,10 @@ const CreativeShowcase = () => {
       {/* 4. Overlay Text Labels (Left/Right of Character) */}
       <div className="w-full max-w-7xl px-4 md:px-10 grid grid-cols-2 text-center mt-6 z-40 pointer-events-none font-mono-technical text-[10px] md:text-xs tracking-widest text-[#c6c6cc]">
         <div className="text-right pr-6 md:pr-16 uppercase">
-          FOUNDING PRODUCT DESIGNER
+          {t.creativeShowcase.leftLabel}
         </div>
         <div className="text-left pl-6 md:pl-16 uppercase">
-          END-TO-END / FULL STACK
+          {t.creativeShowcase.rightLabel}
         </div>
       </div>
 
@@ -231,7 +235,7 @@ const CreativeShowcase = () => {
           className="w-10 h-10 rounded-full border border-[#22262E] hover:border-[#CCFF00] hover:bg-[#111317]/80 flex flex-col items-center justify-center text-[#c6c6cc] hover:text-white transition-all duration-300 group cursor-pointer"
         >
           <span className="font-mono-technical text-[8px] uppercase tracking-wider scale-90 leading-none mb-0.5 select-none">
-            EXPLORE
+            {t.creativeShowcase.explore}
           </span>
           <span className="material-symbols-outlined text-xs leading-none group-hover:translate-y-0.5 transition-transform">
             arrow_downward

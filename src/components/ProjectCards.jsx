@@ -1,69 +1,22 @@
 import React from 'react'
+import { useLanguage } from '../i18n/LanguageContext'
 
 const ProjectCards = () => {
-  const projects = [
-    {
-      num: '[01]',
-      title: 'DASH',
-      category: 'WEBFLOW STUDIO BUILD',
-      description: 'A custom Webflow template shaped for a modern creative studio. Built with a sharp CMS structure, reusable sections, and script-led motion details that keep the portfolio fast and polished.',
-      image: '/images/design_web.jpg',
-      link: 'https://dash-studio.webflow.io'
-    },
-    {
-      num: '[02]',
-      title: 'RACEPOINT',
-      category: 'WEBFLOW EDITORIAL SYSTEM',
-      description: 'A Webflow site with an editorial visual system, custom page templates, and a flexible component setup. Modern interactions and lightweight scripts bring movement to the layout.',
-      image: '/images/deo_web.jpg',
-      link: 'https://racepoint.webflow.io'
-    },
-    {
-      num: '[03]',
-      title: 'COMMUTER',
-      category: 'WEBFLOW FILM PORTFOLIO',
-      description: 'A cinematic Webflow portfolio built around immersive project presentation. Custom templates, CMS-driven media, and modern script enhancements give the site a bold rhythm.',
-      image: '/images/pro_design.jpg',
-      link: 'https://commuter-film.webflow.io'
-    },
-    {
-      num: '[04]',
-      title: 'MINH PHÁT',
-      category: 'DIỆN LẠNH MINH PHÁT',
-      description: 'A modern, high-performance landing page for electric and refrigeration services with automated hotline booking, optimized UI/UX for local service providers.',
-      image: '/images/mobile_elec.png',
-      link: 'https://dienlanhminhphat.vn'
-    },
-    {
-      num: '[05]',
-      title: 'VIVU BOOKING',
-      category: 'TRAVEL & BOOKING APP',
-      description: 'An immersive travel and booking platform UI design. Highly responsive layout with clean interactions, smooth content sliders, and mobile-first navigation.',
-      image: '/images/mobile_vivu.png',
-      link: 'https://vivutravel.vn'
-    },
-    {
-      num: '[06]',
-      title: 'PHÚC THỌ',
-      category: 'CORPORATE WEBSITE',
-      description: 'Structured corporate portal design with professional presentation layer, clean typographic systems, and technical bento details showing service specifications.',
-      image: '/images/mobile_phuctho.png',
-      link: 'https://phuctho.vn'
-    }
-  ]
+  const { t } = useLanguage()
+  const projects = t.projectCards.projects
 
   return (
     <section className="w-full px-4 md:px-10 lg:px-16 py-16 border-b border-[#22262E] select-none scroll-mt-24">
       {/* Header */}
       <div className="mb-12">
         <span className="font-mono-technical text-xs text-[#A3CC00] uppercase tracking-widest block mb-4">
-          // COMPLETED.PROJECTS
+          {t.projectCards.tag}
         </span>
         <h2 className="font-headline-lg-mobile md:font-headline-lg text-3xl md:text-5xl font-extrabold text-white tracking-tighter leading-tight">
-          Danh Sách Dự Án Đã Thực Hiện
+          {t.projectCards.title}
         </h2>
         <p className="text-[#c6c6cc] text-sm md:text-base mt-2 max-w-2xl">
-          Click vào bất kỳ thẻ dự án nào dưới đây để xem trực tiếp bản chạy thử hoặc bản phát hành thực tế của dự án.
+          {t.projectCards.subtitle}
         </p>
       </div>
 
@@ -110,7 +63,7 @@ const ProjectCards = () => {
 
               {/* View Action Link */}
               <div className="border-t border-[#22262E]/50 pt-4 flex justify-between items-center text-[10px] font-mono-technical tracking-wider text-[#c6c6cc] group-hover:text-white transition-colors duration-300 uppercase">
-                <span>VIEW LIVE PROJECT</span>
+                <span>{t.projectCards.viewLive}</span>
                 <span className="text-[#CCFF00] tracking-normal">→</span>
               </div>
             </div>
@@ -122,4 +75,5 @@ const ProjectCards = () => {
 }
 
 export default ProjectCards
+
 

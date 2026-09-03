@@ -1,9 +1,11 @@
 import React, { useRef } from 'react'
+import { LanguageProvider } from './i18n/LanguageContext'
 import ShaderBackground from './components/ShaderBackground'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import CreativeShowcase from './components/CreativeShowcase'
 import About from './components/About'
+import Services from './components/Services'
 import Work from './components/Work'
 import ProjectCards from './components/ProjectCards'
 import IntakeForm from './components/IntakeForm'
@@ -20,7 +22,8 @@ function App() {
   }
 
   return (
-    <div className="relative min-h-screen flex flex-col font-body-lg overflow-x-clip selection:bg-[#CCFF00] selection:text-[#090A0C]">
+    <LanguageProvider>
+      <div className="relative min-h-screen flex flex-col font-body-lg overflow-x-clip selection:bg-[#CCFF00] selection:text-[#090A0C]">
       {/* WebGL Shader Background Layer */}
       <ShaderBackground />
       
@@ -34,44 +37,51 @@ function App() {
 
         {/* Main Content Area */}
         <main className="flex-grow pt-24 pb-16">
-          {/* Hero Section */}
+          {/* [1] Hero Section */}
           <div className="border-b border-[#22262E] py-12 md:py-20">
             <Hero onBriefClick={scrollToBrief} />
           </div>
 
-          {/* Creative Showcase Section */}
+          {/* [2] Creative Showcase Section */}
           <div id="showcase" className="scroll-mt-24">
             <CreativeShowcase />
           </div>
 
-          {/* About & Philosophy Section */}
+          {/* [3] About & Philosophy Section */}
           <div className="border-b border-[#22262E] py-16 md:py-24">
             <About />
           </div>
 
-          {/* Work Showcase Section */}
-          <div id="work" className="border-b border-[#22262E] scroll-mt-24">
+          {/* [4] Services & Craft Architecture Section */}
+          <div className="border-b border-[#22262E] py-16 md:py-24">
+            <Services />
+          </div>
+
+          {/* [5] Work Showcase & Projects Section */}
+          <div className="border-b border-[#22262E]">
             <Work />
           </div>
 
-          {/* Grid Project Cards Section */}
           <div id="projects" className="scroll-mt-24">
             <ProjectCards />
           </div>
 
-          {/* Website Design Brief (Intake Form) Section */}
+          {/* [6] Website Design Brief (Intake Form) Section */}
           <div ref={intakeFormRef} className="border-b border-[#22262E] py-16 md:py-24">
             <IntakeForm />
           </div>
 
-          {/* Contact Section */}
-          <Contact />
+          {/* [7] Contact Section */}
+          <div id="contact" className="scroll-mt-24">
+            <Contact />
+          </div>
         </main>
 
         {/* Footer */}
         <Footer />
       </div>
     </div>
+    </LanguageProvider>
   )
 }
 
