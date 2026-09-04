@@ -142,7 +142,7 @@ export const translations = {
           link: 'https://hospital-landing-page-lake.vercel.app/'
         },
         {
-          num: '[01]',
+          num: '[02]',
           title: 'DUC - AUTO DRIVER',
           category: 'TÀI XẾ RIÊNG CHUYÊN NGHIỆP',
           description: 'Dịch vụ đưa đón tận tâm, an toàn và đúng giờ tại TP.HCM, Cần Thơ và các tỉnh Miền Nam. Hành trình êm ái với dòng xe sedan cao cấp, sạch sẽ và tiện nghi.',
@@ -485,16 +485,16 @@ export const translations = {
           title: 'AETHELGARD',
           category: 'HEALTHCARE & SANCTUARY SYSTEM',
           description: 'A luxury hospital and wellness retreat website designed with an editorial chaptered layout, buttery smooth scroll interactions, and a flexible CMS architecture.',
-          image: '/images/banner_hoppi.jpg',
+          image: '/images/banner_hoppi_11zon.webp',
           link: 'https://hospital-landing-page-lake.vercel.app/'
         },
         {
           num: '[02]',
-          title: 'RACEPOINT',
-          category: 'WEBFLOW EDITORIAL SYSTEM',
-          description: 'A Webflow site featuring an editorial visual hierarchy, custom page templates, and a modular component framework with lightweight interactive accents.',
-          image: '/images/deo_web.jpg',
-          link: 'https://racepoint.webflow.io'
+          title: 'DUC - AUTO DRIVER',
+          category: 'PROFESSIONAL PRIVATE CHAUFFEUR',
+          description: 'Dedicated, safe, and punctual private driver service in Ho Chi Minh City, Can Tho, and Southern Vietnam. Smooth journeys with premium, spotless sedans.',
+          image: '/images/banner_driver_11zon.webp',
+          link: 'https://lading-page-driver.vercel.app'
         },
         {
           num: '[03]',
@@ -509,7 +509,7 @@ export const translations = {
           title: 'MINH PHÁT',
           category: 'REFRIGERATION & HVAC SERVICES',
           description: 'A modern, high-performance landing page for electrical and HVAC contractor services with automated hotline booking and conversion-focused UX.',
-          image: '/images/banner_dienlanh.png',
+          image: '/images/banner_dienlanh_11zon.webp',
           link: 'https://electrician-landing-page-sable.vercel.app'
         },
         {
@@ -517,7 +517,7 @@ export const translations = {
           title: 'VIVU BUDDY',
           category: 'TRAVEL & BOOKING PLATFORM',
           description: 'An immersive travel and booking platform UI. Fluid responsive layouts, intuitive touch-friendly carousels, and a mobile-first navigation model.',
-          image: '/images/banner_vivubuddy.png',
+          image: '/images/banner_vivubuddy_11zon.webp',
           link: 'https://vivubuddy.id.vn'
         },
         {
@@ -525,7 +525,7 @@ export const translations = {
           title: 'PHÚC THỌ',
           category: 'CORPORATE ENTERPRISE PORTAL',
           description: 'Structured corporate portal design featuring sharp typography, clean Bento-cell hierarchy, and high-clarity technical service displays.',
-          image: '/images/banner_phuctho1.png',
+          image: '/images/banner_phuctho1_11zon.webp',
           link: 'https://phucthodev.online'
         }
       ]
