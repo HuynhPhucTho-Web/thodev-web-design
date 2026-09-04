@@ -138,16 +138,16 @@ export const translations = {
           title: 'AETHELGARD',
           category: 'HỆ THỐNG Y TẾ & NGHỈ DƯỠNG CAO CẤP',
           description: 'Một website bệnh viện cao cấp kết hợp nghỉ dưỡng, được xây dựng theo phong cách bố cục tạp chí (editorial layout) với trải nghiệm theo từng chương, tương tác cuộn mượt mà và hệ thống quản trị nội dung linh hoạt.',
-          image: '/images/banner_hoppi.jpg',
+          image: '/images/banner_hoppi_11zon.webp',
           link: 'https://hospital-landing-page-lake.vercel.app/'
         },
         {
-          num: '[02]',
-          title: 'RACEPOINT',
-          category: 'HỆ THỐNG BIÊN TẬP TẠP CHÍ SỐ',
-          description: 'Website Webflow với hệ thống nhận diện thị giác biên tập thời thượng, template trang tùy biến và cấu trúc linh hoạt. Tương tác mượt mà và chuyển động tinh tế mang lại sức sống cho bố cục.',
-          image: '/images/deo_web.jpg',
-          link: 'https://racepoint.webflow.io'
+          num: '[01]',
+          title: 'DUC - AUTO DRIVER',
+          category: 'TÀI XẾ RIÊNG CHUYÊN NGHIỆP',
+          description: 'Dịch vụ đưa đón tận tâm, an toàn và đúng giờ tại TP.HCM, Cần Thơ và các tỉnh Miền Nam. Hành trình êm ái với dòng xe sedan cao cấp, sạch sẽ và tiện nghi.',
+          image: '/images/banner_driver_11zon.webp',
+          link: 'https://lading-page-driver.vercel.app'
         },
         {
           num: '[03]',
@@ -162,7 +162,7 @@ export const translations = {
           title: 'MINH PHÁT',
           category: 'ĐIỆN LẠNH & CƠ ĐIỆN MINH PHÁT',
           description: 'Landing page hiện đại, hiệu năng cao phục vụ ngành dịch vụ điện lạnh với tính năng đặt lịch hotline tức thì, tối ưu hóa giao diện người dùng và tỷ lệ chuyển đổi cuộc gọi.',
-          image: '/images/banner_dienlanh.png',
+          image: '/images/banner_dienlanh_11zon.webp',
           link: 'https://electrician-landing-page-sable.vercel.app'
         },
         {
@@ -170,7 +170,7 @@ export const translations = {
           title: 'VIVU BUDDY',
           category: 'NỀN TẢNG DU LỊCH & ĐẶT TOUR',
           description: 'Thiết kế giao diện nền tảng du lịch và đặt tour cuốn hút. Bố cục thích ứng linh hoạt, tương tác mượt mà với thanh trượt nội dung hiện đại và điều hướng chuẩn mobile-first.',
-          image: '/images/banner_vivubuddy.png',
+          image: '/images/banner_vivubuddy_11zon.webp',
           link: 'https://vivubuddy.id.vn'
         },
         {
@@ -178,7 +178,7 @@ export const translations = {
           title: 'PHÚC THỌ',
           category: 'CỔNG THÔNG TIN DOANH NGHIỆP',
           description: 'Cổng thông tin doanh nghiệp với diện mạo chuyên nghiệp, hệ thống typography chuẩn mực và phong cách Bento Grid thể hiện rõ nét hồ sơ năng lực dịch vụ.',
-          image: '/images/banner_phuctho1.png',
+          image: '/images/banner_phuctho1_11zon.webp',
           link: 'https://phucthodev.online'
         }
       ]
